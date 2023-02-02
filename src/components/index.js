@@ -1,2 +1,10 @@
 export { Login } from "./Login/Login";
 export { OTPVerify } from "./OTPVerify/OTPVerify";
+export { Home } from "./Home/Home";
+export { LeftSide } from "./LeftSide/LeftSide";
+export { RightSide } from "./RightSide/RightSide";
+export { Header } from "./Header/Header";
+export { SongHeader } from "./SongHeader/SongHeader";
+export { SongPlay } from "./SongPLay/SongPlay";
+export { Body } from "./Body/Body";
+export { SongCard } from "./SongCard/SongCard";

@@ -1,10 +1,10 @@
 import React, { useRef, useState } from "react";
 import { Button } from "primereact/button";
 import PhoneInput from "react-phone-input-2";
-import "./Login.css";
 import { useNavigate } from "react-router-dom";
 import { loginAuth } from "../../api/loginAuth";
 import { Toast } from "primereact/toast";
+import "./Login.css";
 
 export const Login = () => {
   const [phone, setPhone] = useState("");

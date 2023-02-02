@@ -5,9 +5,7 @@ import "react-phone-input-2/lib/style.css";
 import "./App.css";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
-import LoginPage from "./pages/LoginPage";
-import OTPVerifyPage from "./pages/OTPVerifyPage";
+import { HomePage, LoginPage, OTPVerifyPage } from "./pages";
 
 function App() {
   return (
@@ -15,6 +13,7 @@ function App() {
       <Routes>
         <Route path="/" exact element={<LoginPage />} />
         <Route path="/otp" exact element={<OTPVerifyPage />} />
+        <Route path="/home" exact element={<HomePage />} />
       </Routes>
     </Router>
   );
