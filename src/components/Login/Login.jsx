@@ -1,18 +1,36 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { Button } from "primereact/button";
 import PhoneInput from "react-phone-input-2";
 import "./Login.css";
 import { useNavigate } from "react-router-dom";
 import { loginAuth } from "../../api/loginAuth";
+import { Toast } from "primereact/toast";
 
 export const Login = () => {
   const [phone, setPhone] = useState("");
 
+  const toast = useRef(null);
+
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const showToast = (severity, summary, detail) => {
+    toast.current.show({
+      severity,
+      summary,
+      detail,
+      life: 3000,
+    });
+  };
+
+
+  const handleSubmit = (e) => {
     e.preventDefault();
     if (phone) {
+      showToast(
+        "success",
+        "OTP Send",
+        "OTP sent to your mobile number!"
+      );
       loginAuth(phone).then((data) => {
         navigate("/otp", {
           state: {
@@ -61,6 +79,7 @@ export const Login = () => {
           />
         </div>
       </div>
+      <Toast ref={toast} />
     </div>
   );
 };
