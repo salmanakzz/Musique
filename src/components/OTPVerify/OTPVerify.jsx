@@ -38,6 +38,7 @@ export const OTPVerify = () => {
             "Sign In",
             "Welcome to your home page!"
           );
+          document.cookie = `token=${data.token}`;
           navigate("/home");
         } else {
           showToast("error", "Invalid OTP", "Try again or request resent!");

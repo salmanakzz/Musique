@@ -6,6 +6,7 @@ import "./App.css";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { HomePage, LoginPage, OTPVerifyPage } from "./pages";
+import { PrivateRoute } from "./route/PrivateRoute";
 
 function App() {
   return (
@@ -13,7 +14,9 @@ function App() {
       <Routes>
         <Route path="/" exact element={<LoginPage />} />
         <Route path="/otp" exact element={<OTPVerifyPage />} />
-        <Route path="/home" exact element={<HomePage />} />
+        <Route element={<PrivateRoute/>}>
+          <Route path="/home" exact element={<HomePage />} />
+        </Route>
       </Routes>
     </Router>
   );
