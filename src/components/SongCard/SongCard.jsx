@@ -20,8 +20,8 @@ export const SongCard = ({ song }) => {
           <img src={image} alt="" className="rounded-[.5rem] w-[110px] " />
           <h1 className="font-semibold w-[17rem]">{title}</h1>
           <div className="flex items-center gap-[10.6rem]">
-            <h1>{source}</h1>
-            <h1>{date}</h1>
+            <h1 className="w-[59px]">{source}</h1>
+            <h1 className="w-[59px]">{date}</h1>
             <div className="cursor-pointer" onClick={addCurrentPlay}>
               <FontAwesomeIcon
                 icon={faPlayCircle}
