@@ -1,43 +1,85 @@
-import {
-  faPlayCircle,
-  faBackwardStep,
-  faForwardStep,
-} from "@fortawesome/free-solid-svg-icons";
+import { faPlayCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Card } from "primereact/card";
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
+import { songList } from "../../data/songs";
 import { ContextSong } from "../../store/store";
+import { Player } from "../Player/Player";
 
 export const SongPlay = () => {
-  const { currentPlay } = useContext(ContextSong);
+  const { currentSong, setCurrentSong } = useContext(ContextSong);
+  const [songs, setSongs] = useState(songList);
+  const [isPlaying, setIsPlaying] = useState(true);
+
+  const audioRefElem = useRef();
+
+  const clickRef = useRef();
+
+  const checkWidth = (e) => {
+    const width = clickRef.current.clientWidth;
+    const offset = e.nativeEvent.offsetX;
+
+    const divprogress = (offset / width) * 100;
+    audioRefElem.current.currentTime = (divprogress / 100) * currentSong.length;
+  };
+
+  useEffect(() => {
+    if (isPlaying) {
+      audioRefElem?.current?.play();
+    } else {
+      audioRefElem?.current?.pause();
+    }
+  }, [isPlaying, currentSong]);
+
+  const onPlaying = () => {
+    const duration = audioRefElem.current.duration;
+    const cc = audioRefElem.current.currentTime;
+
+    setCurrentSong({
+      ...currentSong,
+      progress: (cc / duration) * 100,
+      length: duration,
+    });
+  };
 
   return (
-    <div className={currentPlay ? "fixed bottom-0 w-[78%]" : "fixed bottom-0"}>
+    <div className={currentSong ? "fixed bottom-0 w-[78%]" : "fixed bottom-0"}>
       <Card style={{ background: "#F59E0B", color: "#000" }}>
         <div className="flex justify-start items-center gap-3">
-          {currentPlay ? (
+          {currentSong ? (
             <>
               <img
-                src={currentPlay?.image}
+                src={currentSong?.image}
                 alt=""
                 className="rounded-[.5rem] w-[110px] "
               />
-              <h1 className="font-semibold w-[17rem]">{currentPlay?.title}</h1>
-              <div className="flex items-center gap-[13.6rem]">
-                <h1>{currentPlay?.source}</h1>
-                <h1>{currentPlay?.date}</h1>
-                <div className="flex gap-4">
-                  <FontAwesomeIcon
-                    icon={faBackwardStep}
-                    style={{ height: "2em", color: "#000" }}
-                  />
-                  <FontAwesomeIcon
-                    icon={faPlayCircle}
-                    style={{ height: "2em", color: "#000" }}
-                  />
-                  <FontAwesomeIcon
-                    icon={faForwardStep}
-                    style={{ height: "2em", color: "#000" }}
+              <h1 className="font-semibold w-[200px]">{currentSong?.title}</h1>
+              <div className="flex items-center gap-[13.6rem] ml-[1rem]">
+                <div className="w-[53%] absolute">
+                  <div
+                    className="navigation_wrapper"
+                    onClick={checkWidth}
+                    ref={clickRef}
+                  >
+                    <div
+                      className="seek-bar"
+                      style={{ width: `${currentSong.progress + "%"}` }}
+                    ></div>
+                  </div>
+                </div>
+                <audio
+                  src={currentSong.fileUrl}
+                  ref={audioRefElem}
+                  onTimeUpdate={onPlaying}
+                />
+                <div className="flex absolute right-[4%]">
+                  <Player
+                    songs={songs}
+                    setSongs={setSongs}
+                    isPlaying={isPlaying}
+                    setIsPlaying={setIsPlaying}
+                    currentSong={currentSong}
+                    setCurrentSong={setCurrentSong}
                   />
                 </div>
               </div>

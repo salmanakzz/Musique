@@ -8,3 +8,4 @@ export { SongHeader } from "./SongHeader/SongHeader";
 export { SongPlay } from "./SongPLay/SongPlay";
 export { Body } from "./Body/Body";
 export { SongCard } from "./SongCard/SongCard";
+export { Player } from "./Player/Player";

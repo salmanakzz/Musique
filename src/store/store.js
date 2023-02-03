@@ -5,12 +5,12 @@ export const ContextSong = createContext(null);
 
 function Context({ children }) {
   const [songs, setSongs] = useState(songList);
-  const [currentPlay, setCurrentPlay] = useState(null);
+  const [currentSong, setCurrentSong] = useState(null);
   return (
     <ContextSong.Provider
       value={{
-        currentPlay,
-        setCurrentPlay,
+        currentSong,
+        setCurrentSong,
         songs,
         setSongs,
       }}

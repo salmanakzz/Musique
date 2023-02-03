@@ -7,10 +7,10 @@ import { ContextSong } from "../../store/store";
 export const SongCard = ({ song }) => {
   const { id, title, image, source, date } = song;
 
-  const { setCurrentPlay, setSongs } = useContext(ContextSong);
+  const { setCurrentSong, setSongs } = useContext(ContextSong);
 
   const addCurrentPlay = () => {
-    setCurrentPlay(song);
+    setCurrentSong(song);
   };
 
   return (
