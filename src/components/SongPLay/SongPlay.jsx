@@ -43,7 +43,7 @@ export const SongPlay = () => {
   };
 
   return (
-    <div className={currentSong ? "fixed bottom-0 w-[78%]" : "fixed bottom-0"}>
+    <div className={currentSong ? "fixed bottom-0 w-[78%] song-play" : "fixed bottom-0"}>
       <Card style={{ background: "#F59E0B", color: "#000" }}>
         <div className="flex justify-start items-center gap-3">
           {currentSong ? (
@@ -53,9 +53,9 @@ export const SongPlay = () => {
                 alt=""
                 className="rounded-[.5rem] w-[110px] "
               />
-              <h1 className="font-semibold w-[200px]">{currentSong?.title}</h1>
-              <div className="flex items-center gap-[13.6rem] ml-[1rem]">
-                <div className="w-[53%] absolute">
+              <h1 className="font-semibold w-[200px] current-play-title">{currentSong?.title}</h1>
+              <div className="flex items-center gap-[4.6rem] mx-[1rem] controls">
+                <div className="w-[34vw]">
                   <div
                     className="navigation_wrapper"
                     onClick={checkWidth}
@@ -72,7 +72,7 @@ export const SongPlay = () => {
                   ref={audioRefElem}
                   onTimeUpdate={onPlaying}
                 />
-                <div className="flex absolute right-[4%]">
+                <div className="flex right-[4%] control-icons-2">
                   <Player
                     songs={songs}
                     setSongs={setSongs}

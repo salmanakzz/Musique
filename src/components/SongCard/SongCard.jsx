@@ -18,17 +18,19 @@ export const SongCard = ({ song }) => {
       <Card>
         <div className="flex justify-start items-center gap-3">
           <img src={image} alt="" className="rounded-[.5rem] w-[110px] " />
-          <h1 className="font-semibold w-[17rem]">{title}</h1>
-          <div className="flex items-center gap-[10.6rem]">
+          <h1 className="font-semibold w-[17rem] song-title">{title}</h1>
+          <div className="flex items-center gap-[10.6rem] heading-items">
             <h1 className="w-[59px]">{source}</h1>
             <h1 className="w-[59px]">{date}</h1>
+          </div>
+          <div className="flex items-center gap-[10.6rem] ml-[10.6rem] control-icons">
             <div className="cursor-pointer" onClick={addCurrentPlay}>
               <FontAwesomeIcon
                 icon={faPlayCircle}
                 style={{ height: "2em", color: "#F59E0B" }}
               />
             </div>
-            <div className="mr-5 cursor-pointer">
+            <div className="mr-5 cursor-pointer delete-icon">
               <FontAwesomeIcon
                 icon={faTrash}
                 onClick={() =>

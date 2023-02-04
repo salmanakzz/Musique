@@ -44,7 +44,7 @@ export const Header = () => {
   console.log(songs);
   return (
     <>
-      <div className="p-[.5rem] flex w-[77%] justify-between">
+      <div className="p-[.5rem] flex w-[77%] justify-between header">
         <h1 className="text-[1.3rem] font-semibold">Songs</h1>
         <h1 className="text-[1.3rem] font-semibold">
           <Button

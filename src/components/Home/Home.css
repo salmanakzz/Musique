@@ -1,0 +1,65 @@
+@media only screen and (max-width: 930px) {
+  .home-page {
+    justify-content: start !important;
+  }
+  .logout-div , .left-side{
+    display: none !important;
+  }
+  .right-side {
+    width: 98% !important;
+  }
+  .header {
+    width: 96% !important;
+  }
+  .song-play{
+    width: 95%;
+  }
+}
+
+@media only screen and (max-width: 1250px) {
+  .song-header,
+  .heading-items {
+    display: none !important;
+  }
+}
+
+@media only screen and (max-width: 690px) {
+    .control-icons{
+        margin-left: auto !important;
+    }
+}
+
+@media only screen and (max-width: 527px) {
+    .control-icons{
+        gap: 2rem !important;
+    }
+}
+
+@media only screen and (max-width: 370px) {
+    .delete-icon{
+        display: none !important;
+    }
+}
+
+@media only screen and (max-width: 300px) {
+    .song-title{
+        display: none !important;
+    }
+}
+
+@media only screen and (max-width: 1020px) {
+    .controls{
+        display: block !important;
+        margin-top: 1rem !important;
+        margin-bottom: 1rem !important;
+    }
+    .control-icons-2{
+        margin-top: 1rem !important;
+    }
+}
+
+@media only screen and (max-width: 418px) {
+    .current-play-title{
+        display: none !important;
+    }
+}
