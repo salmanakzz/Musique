@@ -6,6 +6,8 @@ export const ContextSong = createContext(null);
 function Context({ children }) {
   const [songs, setSongs] = useState(songList);
   const [currentSong, setCurrentSong] = useState(null);
+  const [token, setToken] = useState(false);
+  const [auth, setAuth] = useState(false);
   return (
     <ContextSong.Provider
       value={{
@@ -13,6 +15,10 @@ function Context({ children }) {
         setCurrentSong,
         songs,
         setSongs,
+        token,
+        setToken,
+        auth,
+        setAuth
       }}
     >
       {children}

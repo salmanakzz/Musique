@@ -12,9 +12,11 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" exact element={<LoginPage />} />
-        <Route path="/otp" exact element={<OTPVerifyPage />} />
-        <Route element={<PrivateRoute/>}>
+        <Route element={<PrivateRoute login={true} />}>
+          <Route path="/" exact element={<LoginPage />} />
+        </Route>
+          <Route path="/otp" exact element={<OTPVerifyPage />} />
+        <Route element={<PrivateRoute />}>
           <Route path="/home" exact element={<HomePage />} />
         </Route>
       </Routes>

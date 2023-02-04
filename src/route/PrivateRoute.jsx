@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { ContextSong } from "../store/store";
 import { TokenCheck } from "./TokenCheck";
 
-export const PrivateRoute = () => {
-  const [token, setToken] = useState(false);
-  const [auth, setAuth] = useState(false);
+export const PrivateRoute = ({ login }) => {
+  const { token, setToken, auth, setAuth } = useContext(ContextSong);
 
   useEffect(() => {
     function getCookie(name) {
@@ -16,7 +16,6 @@ export const PrivateRoute = () => {
       setToken(true);
     }
     setAuth(true);
-  }, []);
-console.log(auth,"auth")
-  return auth && <TokenCheck token={token}/>;
+  }, [token]);
+  return auth && <TokenCheck token={token} login={login} />;
 };

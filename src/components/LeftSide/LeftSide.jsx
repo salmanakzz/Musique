@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { ContextSong } from "../../store/store";
 
 export const LeftSide = () => {
+  const { setToken, setAuth } = useContext(ContextSong);
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -10,6 +12,8 @@ export const LeftSide = () => {
     }
 
     deleteCookie("token");
+    setAuth(false)
+    setToken(false)
     navigate("/");
   };
 
